@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    #Gen {
+      position: relative;
+      left: 80px;
+      width: 200px;
+      height: 200px;
+      background-color: gray;
+    }
+
+    button {
+      background-color: blue;
+      color: white;
+    }
+
+    #Alto {
+      position: absolute;
+      top: 0px;
+      left: 60px;
+    }
+
+    #Basso {
+      position: absolute;
+      top: 20px;
+      left: 58px;
+    }
+
+    #Sinistra {
+      position: absolute;
+      top: 10px;
+    }
+
+    #Destra {
+      position: absolute;
+      top: 10px;
+      left: 100px;
+    }
+
+    #movingImage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      border-radius: 50%; /* Rende l'elemento circolare */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="Gen">
+    <button onclick="Clicca('Alto')" id="Alto">Alto</button>
+    <button onclick="Clicca('Basso')" id="Basso">Basso</button>
+    <button onclick="Clicca('Sinistra')" id="Sinistra">Sinistra</button>
+    <button onclick="Clicca('Destra')" id="Destra">Destra</button>
+  </div>
+
+  <!-- Aggiunta dell'immagine -->
+  <div id="movingImage">
+    
+  </div>
+
+  <p id="demo"></p>
+
+  <script>
+    const movingImage = document.getElementById('movingImage');
+
+    function moveImage(direction) {
+      const step = 10;
+      let currentLeft = parseInt(getComputedStyle(movingImage).left) || 0;
+      let currentTop = parseInt(getComputedStyle(movingImage).top) || 0;
+
+      switch (direction) {
+        case 'Alto':
+          movingImage.style.top = ${currentTop - step}px;
+          break;
+        case 'Basso':
+          movingImage.style.top = ${currentTop + step}px;
+          break;
+        case 'Sinistra':
+          movingImage.style.left = ${currentLeft - step}px;
+          break;
+        case 'Destra':
+          movingImage.style.left = ${currentLeft + step}px;
+          break;
+        default:
+          break;
+      }
+    }
+
+    function Clicca(direction) {
+      document.getElementById("demo").innerHTML = direction;
+      moveImage(direction);
+    }
+  </script>
+</body>
+
+</html>
