@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggiungi Numeri</title>
+    <style>
+
+        button {
+            border-radius: 10%;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: rgb(9, 255, 0);
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Aggiungi Numeri</h1>
+
+    <button id="button1" onclick="Pulsante(1)">Aggiungi 2 numeri</button><br>
+    <button id="button2" onclick="Pulsante(2)">Aggiungi 3 numeri</button><br>
+    <button id="button3" onclick="Pulsante(3)">Aggiungi 7 numeri</button><br>
+
+    <script>
+
+        let valore1 = 0;
+        let valore2 = 0;
+        let valore3 = 0;
+
+        function Pulsante(buttonId) {
+            let result;
+
+            switch (buttonId) {
+                case 1:
+                    valore1 += 2;
+                    result = valore1;
+                    break;
+                case 2:
+                    valore2 += 3;
+                    result = valore2;
+                    break;
+                case 3:
+                    valore3 += 7;
+                    result = valore3;
+                    break;
+                default:
+                    result = 0;
+            }
+
+            alert("Risultato: " + result);
+        }
+
+    </script>
+
+</body>
+</html>
