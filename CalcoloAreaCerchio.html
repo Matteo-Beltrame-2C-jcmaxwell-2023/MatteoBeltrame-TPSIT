@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Calcolo Area Del Cerchio</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+
+    <h1>Calcolo Area Del Cerchio</h1>
+
+    <label for="Raggio">Inserisci il Raggio del Cerchio in Centimetri</label><br><br>
+    <input type="number" id="Raggio"><br><br>
+
+    <button onclick="AreaCalcolo()">Calcola</button>
+    <div id="outputContainer"></div>
+
+<script>
+
+function AreaCalcolo() {
+
+      const Raggio = document.getElementById("Raggio").value;
+      const outputContainer = document.getElementById('outputContainer');
+      outputContainer.innerHTML=' ';
+      const Area = (Raggio*Raggio) * 3.14;
+      outputContainer.innerHTML += `<p>Area: ${Area}</p>`;
+
+      let str = "";
+
+      outputContainer.innerHTML += `<p>${str}</p>`;
+}
+
+</script>
+
+</body>
+</html>
