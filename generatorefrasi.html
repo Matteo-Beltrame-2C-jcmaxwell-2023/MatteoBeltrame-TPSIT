@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generatore di Frasi Casuali</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="mb-4">Generatore di Frasi Casuali</h1>
+  <div class="card">
+    <div class="card-body">
+      <p id="randomPhrase"></p>
+      <button class="btn btn-primary" onclick="generateRandomPhrase()">Genera Frase Casuale</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Array di soggetti, verbi, complementi oggetto e aggettivi
+  const soggetti1 = ['La montagna', 'Il musicista', 'La casa', 'La fotografa', 'Il treno', 'Il cuoco', 'Il ballerino', 'Il giardiniere', 'Il medico', 'Il pittore'];
+  const verbi = ['esplora', 'comporre', 'costruire', 'catturare', 'viaggiare', 'preparare', 'danzare', 'pianificare', 'curare', 'dipingere'];
+  const complementiOggetto = ['la canzone', 'il panorama', 'il progetto', 'il momento', 'il viaggio', 'il pasto', 'lo spettacolo', 'il giardino', 'il paziente', 'il quadro'];
+  const aggettivi = ['meravigliosa', 'ispiratrice', 'accogliente', 'emozionante', 'veloce', 'deliziosa', 'elegante', 'rinfrescante', 'utile', 'creativo'];
+;
+
+  // Funzione per generare una frase casuale
+  function generateRandomPhrase() {
+    const randomSubject = soggetti1[Math.floor(Math.random() * soggetti1.length)];
+    const randomVerb = verbi[Math.floor(Math.random() * verbi.length)];
+    const randomObject = complementiOggetto[Math.floor(Math.random() * soggetti1.length)];
+    const randomAdjective = aggettivi[Math.floor(Math.random() * aggettivi.length)];
+
+    const randomPhrase = `${randomSubject} ${randomVerb} ${randomAdjective} ${randomObject}.`;
+
+    document.getElementById('randomPhrase').innerText = randomPhrase;
+  }
+</script>
+
+</body>
+</html>
