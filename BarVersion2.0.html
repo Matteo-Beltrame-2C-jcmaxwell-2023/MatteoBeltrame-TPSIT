@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drink Bar</title>
+
+  <style>
+    body {
+      background-color: lightgoldenrodyellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button id="Istruzioni">Istruzioni</button>
+  <button id="Menu Dei Drink">Menu Drink</button>
+  <button id="I Tuoi Ordini">Ordini</button>
+  <button id="ContaElementi">Conta Elementi</button>
+  <button id="Aggiungi">Aggiungi</button>
+  <button id="Elimina">Elimina</button>
+  <button id="Compra">Compra</button>
+
+  <div id="output"></div>
+
+  <script>
+    const istruzioniBtn = document.getElementById("Istruzioni");
+    const menuDrinkBtn = document.getElementById("Menu Dei Drink");
+    const ordiniBtn = document.getElementById("I Tuoi Ordini");
+    const contaElementiBtn = document.getElementById("ContaElementi");
+    const aggiungiBtn = document.getElementById("Aggiungi");
+    const eliminaBtn = document.getElementById("Elimina");
+    const compraBtn = document.getElementById("Compra");
+    const outputDiv = document.getElementById("output");
+
+    let ordiniList = [];
+    let drinks = ["JagerBomb", "VodkaRedbull", "Spritz"];
+
+    istruzioniBtn.addEventListener("click", () => {
+      outputDiv.textContent = "Benvenuto! Clicca su 'Menu Drink' per vedere il menu, clicca su 'Ordini' per vedere gli ordini ";
+    });
+
+    menuDrinkBtn.addEventListener("click", () => {
+      outputDiv.innerHTML = "<ul><li>" + drinks.join("</li><li>") + "</li></ul>";
+    });
+
+    ordiniBtn.addEventListener("click", () => {
+      const ordine = prompt("Inserisci il tuo ordine:");
+      ordiniList.push(ordine);
+      outputDiv.textContent = "Ordini: " + ordiniList.join(", ");
+    });
+
+    contaElementiBtn.addEventListener("click", () => {
+      outputDiv.textContent = "Numero di elementi: " + drinks.length;
+    });
+
+    aggiungiBtn.addEventListener("click", () => {
+      const newDrink = prompt("Inserisci il nome del nuovo drink:");
+      drinks.push(newDrink);
+      outputDiv.textContent = "Nuovo drink aggiunto: " + newDrink;
+    });
+
+    eliminaBtn.addEventListener("click", () => {
+      const index = prompt("Inserisci l'indice del drink da eliminare:");
+      if (index >= 0 && index < drinks.length) {
+        const deletedDrink = drinks.splice(index, 1);
+        outputDiv.textContent = "Drink eliminato: " + deletedDrink;
+      } else {
+        outputDiv.textContent = "Indice non valido!";
+      }
+    });
+
+    compraBtn.addEventListener("click", () => {
+      const ordiniNumerici = prompt("Inserisci gli ordini separati da virgola (es. 1,2,3):");
+      const ordiniArray = ordiniNumerici.split(",").map(Number);
+      const orderedDrinks = ordiniArray.map(index => drinks[index - 1]).filter(drink => drink);
+      outputDiv.innerHTML = "<ul><li>" + orderedDrinks.join("</li><li>") + "</li></ul>";
+    });
+  </script>
+
+</body>
+
+</html>
+
