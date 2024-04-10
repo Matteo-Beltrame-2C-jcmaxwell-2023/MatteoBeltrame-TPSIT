@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisi Numerica</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <style> 
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+        .container-custom {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-custom {
+            width: 100%;
+        }
+        #risultato {
+            margin-top: 20px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        #arrayVisualizzato {
+            margin-top: 20px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-custom">
+    <h1 class="text-center mb-4">Analisi Numerica</h1>
+
+    <button class="btn btn-primary mb-3 btn-custom" onclick="stampaNumeri()">Stampa numeri da 1 a 100</button>
+    <button class="btn btn-primary mb-3 btn-custom" onclick="popolaArrayNumeri()">Popola array con numeri da 1 a 100</button>
+    <button class="btn btn-primary mb-3 btn-custom" onclick="filtraNumeriPari()">Filtra numeri pari</button>
+    <button class="btn btn-primary mb-3 btn-custom" onclick="filtraNumeriDispari()">Filtra numeri dispari</button>
+
+    <div>
+        <h4 class="mt-4">Risultato:</h4>
+        <p id="risultato"></p>
+    </div>
+
+    <div>
+        <h4 class="mt-4">Array visualizzato con intervallo di un secondo:</h4>
+        <p id="arrayVisualizzato"></p>
+    </div>
+</div>
+
+<script>
+    let arrayNumeri=[];
+
+    function stampaNumeri() {
+        let output = '';
+        for (let i=1;i<=100;i++) {
+            output+=i+' ';
+        }
+        document.getElementById('risultato').textContent=output;
+    }
+
+    function popolaArrayNumeri() {
+        arrayNumeri=[];
+        for (let i=1;i<=100;i++) {
+            arrayNumeri.push(i);
+        }
+        document.getElementById('risultato').textContent = 'Array popolato con numeri da 1 a 100';
+    }
+
+    function filtraNumeriPari() {
+        let numeriPari=arrayNumeri.filter(num=>num%2===0);
+        document.getElementById('risultato').textContent = 'Numeri pari: ' + numeriPari.join(', ');
+    }
+
+    function filtraNumeriDispari() {
+        let numeriDispari = arrayNumeri.filter(num=>num%2!==0);
+        document.getElementById('risultato').textContent = 'Numeri dispari: ' + numeriDispari.join(', ');
+    }
+
+    let indiceCorrente = 0;
+    function visualizzaArrayConIntervallo() {
+        if (indiceCorrente<arrayNumeri.length) {
+            document.getElementById('arrayVisualizzato').textContent = arrayNumeri[indiceCorrente];
+            indiceCorrente++;
+        } else {
+            clearInterval(intervalloId);
+        }
+    }
+
+    let intervalloId;
+    document.querySelectorAll('.btn-custom').forEach(btn => {
+        btn.addEventListener('click', () => {
+            indiceCorrente=0;
+            clearInterval(intervalloId); // Ferma eventuali interval già in corso
+            intervalloId=setInterval(visualizzaArrayConIntervallo, 1000);
+        });
+    });
+</script>
+
+</body>
+</html>
