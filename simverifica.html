@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colori per multipli di numeri specifici</title>
+
+    <style>
+        .quadrato {
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+
+        .blue {
+            background-color: rgb(97, 97, 211);
+        }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+    <script>
+        const numeriDaControllare = [2, 3, 5]; // Modifica questa lista con i numeri di tuo interesse
+
+        function isMultiplo(numero, multipli) {
+            return multipli.some(multiplo => numero % multiplo === 0);
+        }
+
+        const outputDiv = document.getElementById('output');
+
+        for (let i = 0; i < 100; i++) {
+            const numeroCasuale = Math.floor(Math.random() * 100) + 1;
+            const colore = isMultiplo(numeroCasuale, numeriDaControllare) ? 'pink' : 'blue';
+            outputDiv.innerHTML += `<div class="quadrato ${colore}">${numeroCasuale}</div>`;
+        }
+    </script>
+</body>
+</html>
